@@ -32,3 +32,18 @@ def test_multiplicar_a_invalido_b_valido() -> None:
     response = client.get('/multiplicar?a=2.2&b=2')
     assert response.status_code == 400
     assert response.json() == {"error": "1 validation error for Request\nquery -> a\n  value is not a valid integer (type=type_error.integer)"}
+
+def test_dividir_a_b_validos() -> None:
+    response = client.get('/dividir?a=4&b=2')
+    assert response.status_code == 200
+    assert response.json() == {"a": 4, "b": 2, "resultado" : 2 }
+
+def test_dividir_b_zero() -> None:
+    response = client.get('/dividir?a=4&b=0')
+    assert response.status_code == 400
+    assert response.json() == {"error": "b cannot be 0 (zero)"}
+
+def test_dividir_a_invalido_b_valido() -> None:
+    response = client.get('/dividir?a=2.2&b=2')
+    assert response.status_code == 400
+    assert response.json() == {"error": "1 validation error for Request\nquery -> a\n  value is not a valid integer (type=type_error.integer)"}
