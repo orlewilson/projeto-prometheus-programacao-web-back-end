@@ -42,5 +42,19 @@ async def subtrair(a : int, b : int):
         status_code = 200,
         content = {"a": a,
                    "b": b,
-                   "resultado" :resultado },
+                   "resultado" : resultado },
+    )
+
+# @app.get('/multiplicar') informa ao FastAPI que esta função gerenciará as
+# requisições a partir do caminho /multiplicar
+@app.get('/multiplicar')
+async def multiplicar(a : int, b : int):
+    """Método que será chamado quando for requisitada a rota /multiplicar"""
+    resultado = a * b
+
+    return JSONResponse(
+        status_code = 200,
+        content = {"a": a,
+                   "b": b,
+                   "resultado" : resultado },
     )
