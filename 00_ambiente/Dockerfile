@@ -19,10 +19,11 @@ RUN pip install fastapi
 RUN pip install uvicorn
 RUN pip install httpx
 
-# Qualidade de Software
+# Qualidade de Software (QA)
 RUN pip install pytest 
 RUN pip install pytest-cov
 RUN pip install pylint
+RUN pip install pylint-json2html
 
 # Diretório Padrão
 WORKDIR /apps
