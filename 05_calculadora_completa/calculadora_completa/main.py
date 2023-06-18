@@ -30,3 +30,17 @@ async def somar(a : int, b : int):
                    "b": b,
                    "resultado" :resultado },
     )
+
+# @app.get('/subtrair') informa ao FastAPI que esta função gerenciará as
+# requisições a partir do caminho /subtrair
+@app.get('/subtrair')
+async def subtrair(a : int, b : int):
+    """Método que será chamado quando for requisitada a rota /subtrair"""
+    resultado = a - b
+
+    return JSONResponse(
+        status_code = 200,
+        content = {"a": a,
+                   "b": b,
+                   "resultado" :resultado },
+    )
