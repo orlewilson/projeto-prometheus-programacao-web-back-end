@@ -1,0 +1,28 @@
+# Imagem Base
+FROM debian:11
+
+# Mantenedor
+LABEL version="1.0"
+LABEL author="Orlewilson Maia (orlewilson.maia@gmail.com)"
+LABEL description="Debian 11 + Python3 + FastAPI + QA"
+
+# Atualização dos Pacotes
+RUN apt update
+
+# Instalação dos Pacotes 
+# Python
+RUN apt install -y python3
+RUN apt install -y pip
+
+# FastAPI
+RUN pip install fastapi
+RUN pip install uvicorn
+RUN pip install httpx
+
+# Qualidade de Software
+RUN pip install pytest 
+RUN pip install pytest-cov
+RUN pip install pylint
+
+# Diretório Padrão
+WORKDIR /apps
