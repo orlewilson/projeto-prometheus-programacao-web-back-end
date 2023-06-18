@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "662645c2-d87d-4e1a-b4ce-83700c52d312",
+		"name": "03_hello_world_fast_api_v3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14238689"
+	},
+	"item": [
+		{
+			"name": "Exemplo Request with name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"message is Hello World, Orlewilson!\", function () {\r",
+							"    pm.expect(json_response.message).to.eql(\"Hello World, Orlewilson!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/hello-world?name=Orlewilson",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"hello-world"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Orlewilson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exemplo Request without name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"message is Hello World!\", function () {\r",
+							"    pm.expect(json_response.message).to.eql(\"Hello World!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/hello-world",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"hello-world"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exemplo Request name is empty",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"message is Name cannot be empty!!\", function () {\r",
+							"    pm.expect(json_response.message).to.eql(\"Name cannot be empty!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/hello-world?name=",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"hello-world"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endereco_servidor",
+			"value": "172.31.122.120",
+			"type": "string"
+		},
+		{
+			"key": "porta",
+			"value": "5000",
+			"type": "string"
+		}
+	]
+}
