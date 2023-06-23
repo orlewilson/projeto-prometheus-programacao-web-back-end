@@ -1,0 +1,8 @@
+[run]
+source = ../hello_world_fast_api_v3
+
+omit = \
+    */.local/*, \
+    /usr/*, \
+    ../tests/*, \
+    *\__init__.py 
