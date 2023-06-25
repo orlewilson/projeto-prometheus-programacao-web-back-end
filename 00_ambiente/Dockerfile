@@ -19,6 +19,14 @@ RUN pip install fastapi
 RUN pip install uvicorn
 RUN pip install httpx
 
+# Banco de Dados (MySQL)
+RUN pip install sqlalchemy 
+RUN pip install pymysql
+RUN pip install cryptography
+
+# Banco de Dados (MongoDB)
+RUN pip install pymongo
+
 # Qualidade de Software (QA)
 RUN pip install pytest 
 RUN pip install pytest-cov
