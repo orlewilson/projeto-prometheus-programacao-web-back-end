@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ce4deb64-79cf-40b0-a379-b1f05ed1bb03",
+		"_postman_id": "2dec2432-f6b2-4010-a0ce-0ce8dbcd7965",
 		"name": "01_hello_world_fast_api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14238689"
@@ -85,7 +85,7 @@
 	"variable": [
 		{
 			"key": "endereco_servidor",
-			"value": "172.31.122.120",
+			"value": "localhost",
 			"type": "string"
 		},
 		{

@@ -91,7 +91,7 @@
 	"variable": [
 		{
 			"key": "endereco_servidor",
-			"value": "172.31.122.120",
+			"value": "localhost",
 			"type": "string"
 		},
 		{
