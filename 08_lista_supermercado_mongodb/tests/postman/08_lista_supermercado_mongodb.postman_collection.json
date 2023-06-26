@@ -1,0 +1,905 @@
+{
+	"info": {
+		"_postman_id": "b6c4659e-5c1a-47f2-9b79-59d06a1bf1f6",
+		"name": "08_lista_supermercado_mongodb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14238689"
+	},
+	"item": [
+		{
+			"name": "Listar todos os produtos quando a lista estiver vazia",
+			"item": [
+				{
+					"name": "Apagar lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Lista está apagada?\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"A lista do supermercado está vazia!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos os produtos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"A lista do supermercado está vazia!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listar todos os produtos quando a lista tiver somente 1 item",
+			"item": [
+				{
+					"name": "Apagar lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Lista está apagada?\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"A lista do supermercado está vazia!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar um produto sem preço",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.include({\"item\": \"teste5\",\"quantidade\": 5,\"preco\": null});\r",
+									"     // Salva o id atual para realizar atualização\r",
+									"    pm.collectionVariables.set(\"id_produto_atualizar\", json_response.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"item\": \"teste5\",\r\n  \"quantidade\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos os produtos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response.id).eql(pm.collectionVariables.get(\"id_produto_atualizar\"));\r",
+									"    pm.expect(json_response.item).eql(\"teste5\");\r",
+									"    pm.expect(json_response.quantidade).eql(5);\r",
+									"    pm.expect(json_response.preco).eql(null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/{{id_produto_atualizar}}",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								"{{id_produto_atualizar}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adicionar um produto com body vazio",
+			"item": [
+				{
+					"name": "Apagar lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Lista está apagada?\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"A lista do supermercado está vazia!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar um produto sem body",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"error\": \"2 validation errors for Request\\nbody -> item\\n  field required (type=value_error.missing)\\nbody -> quantidade\\n  field required (type=value_error.missing)\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atualizar um produto existente na lista",
+			"item": [
+				{
+					"name": "Apagar lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Lista está apagada?\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"A lista do supermercado está vazia!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar um produto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.include({\"item\": \"teste10\",\"quantidade\": 10,\"preco\": null});\r",
+									"    \r",
+									"    // Salva o id atual para realizar atualização\r",
+									"    pm.collectionVariables.set(\"id_produto_atualizar\", json_response.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"item\": \"teste10\",\r\n  \"quantidade\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar um produto existente na lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.include({\"item\": \"teste10\",\"quantidade\": 20,\"preco\": 2.2});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"item\": \"teste10\",\r\n  \"quantidade\": 20,\r\n  \"preco\": 2.2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/{{id_produto_atualizar}}",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								"{{id_produto_atualizar}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apagar um produto existente na lista",
+			"item": [
+				{
+					"name": "Apagar lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Lista está apagada?\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"A lista do supermercado está vazia!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar um produto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.include({\"item\": \"teste10\",\"quantidade\": 10,\"preco\": null});\r",
+									"    \r",
+									"    // Salva o id atual para realizar atualização\r",
+									"    pm.collectionVariables.set(\"id_produto_atualizar\", json_response.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"item\": \"teste10\",\r\n  \"quantidade\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verificar operação apagar um produto da lista",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Resposta da requisição\r",
+									"const json_response = pm.response.json();\r",
+									"\r",
+									"// Verificação do status code\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Verificação do Content-Type\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"// Verificação da mensagem\r",
+									"pm.test(\"Mensagem está correta\", function () {\r",
+									"    pm.expect(json_response).to.eql({\"message\": \"Produto id=\"+ pm.collectionVariables.get(\"id_produto_atualizar\") + \" apagado com sucesso!\"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/{{id_produto_atualizar}}",
+							"protocol": "http",
+							"host": [
+								"{{endereco_servidor}}"
+							],
+							"port": "{{porta}}",
+							"path": [
+								"produtos",
+								"{{id_produto_atualizar}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endereco_servidor",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "porta",
+			"value": "5000",
+			"type": "string"
+		},
+		{
+			"key": "id_produto_atualizar",
+			"value": ""
+		}
+	]
+}
