@@ -1,0 +1,1151 @@
+{
+	"info": {
+		"_postman_id": "422603ca-496b-4cfa-b444-545aea8f2de2",
+		"name": "05_calculadora_completa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14238689"
+	},
+	"item": [
+		{
+			"name": "Verificar operação somar com a e b validos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação somar quando a e b são valores válidos traz o resultado correto?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"a\": 5, \"b\": 3, \"resultado\": 2});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=0&b=9",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "0"
+						},
+						{
+							"key": "b",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação somar com a invalido e b valido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação somar está tratando quando a é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=asd&b=5",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "asd"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação somar com a valido e b invalido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação subtrair está tratando quando b é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=2&b=-5.4",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2"
+						},
+						{
+							"key": "b",
+							"value": "-5.4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação somar com a e b invalidos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação somar está tratando quando a e b são valores inválidos?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"2 validation errors for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=2.2&b=orlewilson",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2.2"
+						},
+						{
+							"key": "b",
+							"value": "orlewilson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação subtrair com a e b validos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação subtrair quando a e b são valores válidos traz o resultado correto?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"a\": 5, \"b\": 3, \"resultado\": 2});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/subtrair?a=5&b=3",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"subtrair"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "5"
+						},
+						{
+							"key": "b",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação subtrair com a invalido e b valido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação subtrair está tratando quando a é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=asd&b=5",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "asd"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação subtrair com a valido e b invalido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação subtrair está tratando quando b é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=2&b=-5.4",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2"
+						},
+						{
+							"key": "b",
+							"value": "-5.4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação subtrair com a e b invalidos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação subtrair está tratando quando a e b são valores inválidos?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"2 validation errors for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/somar?a=2.2&b=orlewilson",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"somar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2.2"
+						},
+						{
+							"key": "b",
+							"value": "orlewilson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação multiplicar com a e b validos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação multiplicar quando a e b são valores válidos traz o resultado correto?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"a\": 5, \"b\": 6, \"resultado\": 30});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/multiplicar?a=5&b=6",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"multiplicar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "5"
+						},
+						{
+							"key": "b",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação multiplicar com a invalido e b valido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação multiplicar está tratando quando a é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/multiplicar?a=asd&b=5",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"multiplicar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "asd"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação multiplicar com a valido e b invalido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação multiplicar está tratando quando b é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/multiplicar?a=2&b=-5.4",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"multiplicar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2"
+						},
+						{
+							"key": "b",
+							"value": "-5.4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação multiplicar com a e b invalidos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação multiplicar está tratando quando a e b são valores inválidos?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"2 validation errors for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/multiplicar?a=2.2&b=orlewilson",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"multiplicar"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2.2"
+						},
+						{
+							"key": "b",
+							"value": "orlewilson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação dividir com a e b validos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação dividir quando a e b são valores válidos traz o resultado correto?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"a\": 6, \"b\": 2, \"resultado\": 3});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/dividir?a=6&b=2",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"dividir"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "6"
+						},
+						{
+							"key": "b",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação dividir com a invalido e b valido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação dividir está tratando quando a é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/dividir?a=asd&b=5",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"dividir"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "asd"
+						},
+						{
+							"key": "b",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação dividir com a valido e b invalido",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação dividir está tratando quando b é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"1 validation error for Request\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/dividir?a=2&b=-5.4",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"dividir"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2"
+						},
+						{
+							"key": "b",
+							"value": "-5.4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação dividir com a e b invalidos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação dividir está tratando quando a e b são valores inválidos?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"2 validation errors for Request\\nquery -> a\\n  value is not a valid integer (type=type_error.integer)\\nquery -> b\\n  value is not a valid integer (type=type_error.integer)\"});\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/dividir?a=2.2&b=orlewilson",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"dividir"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2.2"
+						},
+						{
+							"key": "b",
+							"value": "orlewilson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar operação dividir com a valido e b igual a zero",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Resposta da requisição\r",
+							"const json_response = pm.response.json();\r",
+							"\r",
+							"// Verificação do status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verificação do Content-Type\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Verificação da mensagem\r",
+							"pm.test(\"A operação dividir está tratando quando b é um valor inválido?\", function () {\r",
+							"    pm.expect(json_response).to.eql({\"error\": \"b cannot be 0 (zero)\"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{endereco_servidor}}:{{porta}}/dividir?a=2&b=0",
+					"protocol": "http",
+					"host": [
+						"{{endereco_servidor}}"
+					],
+					"port": "{{porta}}",
+					"path": [
+						"dividir"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "2"
+						},
+						{
+							"key": "b",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endereco_servidor",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "porta",
+			"value": "5000",
+			"type": "string"
+		}
+	]
+}
