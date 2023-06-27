@@ -1,0 +1,8 @@
+[run]
+source = ../lista_supermercado_mysql
+
+omit = \
+    */.local/*, \
+    /usr/*, \
+    ../tests/*, \
+    *\__init__.py 
