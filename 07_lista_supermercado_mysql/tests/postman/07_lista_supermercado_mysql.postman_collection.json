@@ -296,9 +296,9 @@
 									"\r",
 									"// Verificação da mensagem\r",
 									"pm.test(\"Mensagem está correta\", function () {\r",
-									"    pm.expect(json_response.item).eql(\"teste5\");\r",
-									"    pm.expect(json_response.quantidade).eql(5);\r",
-									"    pm.expect(json_response.preco).eql(null);\r",
+									"    pm.expect(json_response[0].item).eql(\"teste5\");\r",
+									"    pm.expect(json_response[0].quantidade).eql(5);\r",
+									"    pm.expect(json_response[0].preco).eql(null);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -309,15 +309,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos/{{id_produto_atualizar}}",
+							"raw": "http://{{endereco_servidor}}:{{porta}}/produtos",
 							"protocol": "http",
 							"host": [
 								"{{endereco_servidor}}"
 							],
 							"port": "{{porta}}",
 							"path": [
-								"produtos",
-								"{{id_produto_atualizar}}"
+								"produtos"
 							]
 						}
 					},
