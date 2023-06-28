@@ -26,6 +26,7 @@ RUN pip install cryptography
 
 # Banco de Dados (MongoDB)
 RUN pip install pymongo
+RUN pip install motor
 
 # Qualidade de Software (QA)
 RUN pip install pytest 
