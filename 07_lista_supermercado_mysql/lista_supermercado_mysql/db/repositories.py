@@ -2,7 +2,11 @@
 
 # Bibliotecas
 from sqlalchemy.orm import Session
-from db.models import Produto
+
+try:
+    from db.models import Produto
+except:
+    from lista_supermercado_mysql.db.models import Produto
 
 class ProdutoRepository:
     @staticmethod

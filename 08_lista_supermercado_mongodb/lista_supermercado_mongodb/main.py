@@ -4,16 +4,16 @@
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-from routes.api import router as api_router
-# try:
-    
-# except:
-#     from lista_supermercado_mongodb.routes.api import router as api_router
+
+try:
+    from routes.api import router as api_router    
+except:
+    from lista_supermercado_mongodb.routes.api import router as api_router
 
 # Cria uma instância da classe FastAPI para habilitar a interação com nossa API
 app = FastAPI()
 
-origins = ["http://0.0.0.0:8000"]
+origins = ["http://0.0.0.0:5000"]
 
 app.add_middleware(
     CORSMiddleware,

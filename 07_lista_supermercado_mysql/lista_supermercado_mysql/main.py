@@ -61,7 +61,7 @@ async def obter_produto(id: int, db: Session = Depends(get_db)):
     if not produto:
         return JSONResponse(
             status_code = 404,
-            content = {"message": "Produto " + id + " não foi encontrado na lista!"},
+            content = {"message": "Produto " + str(id) + " não foi encontrado na lista!"},
         )
     return ProdutoResponse.from_orm(produto)
     
@@ -83,7 +83,7 @@ async def atualizar_produto(id: int, request: ProdutoRequest, db: Session = Depe
     if not ProdutoRepository.existe_produto_por_id(db, id):
         return JSONResponse(
             status_code = 404,
-            content = {"message": "Produto " + id + " não foi encontrado na lista!"},
+            content = {"message": "Produto " + str(id) + " não foi encontrado na lista!"},
         )
     else:
         produto = ProdutoRepository.atualizar_produto(db, Produto(id=id, **request.dict()))
