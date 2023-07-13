@@ -18,3 +18,4 @@ class ProdutoResponse(ProdutoBase):
 
     class Config:
         orm_mode = True # está informando que utilizaremos o mapeamento objeto relacional
+        from_attributes = True
